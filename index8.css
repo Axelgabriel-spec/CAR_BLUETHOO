@@ -1,0 +1,123 @@
+:root {
+            --neon-blue: #00d4ff;
+            --neon-red: #ff004c;
+            --dark-bg: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            touch-action: manipulation;
+            user-select: none;
+        }
+
+        header {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .btn-connect {
+            padding: 12px 24px;
+            background: var(--neon-blue);
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .mode-selector {
+            margin: 10px;
+        }
+
+        /* --- Estilo Control Flechas --- */
+        #control-arrows {
+            display: grid;
+            grid-template-areas: 
+                ". up ."
+                "left stop right"
+                ". down .";
+            gap: 15px;
+            margin-top: 50px;
+        }
+
+        .btn-control {
+            width: 80px;
+            height: 80px;
+            background: #333;
+            border: 2px solid var(--neon-blue);
+            border-radius: 15px;
+            color: white;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-control:active {
+            background: var(--neon-blue);
+            color: black;
+        }
+
+        /* --- Estilo Volante y Pedales --- */
+        #control-wheel {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .volante-container {
+            width: 200px;
+            height: 200px;
+            border: 10px solid #555;
+            border-radius: 50%;
+            position: relative;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, #333 30%, #111 100%);
+        }
+
+        .pedales-container {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .pedal {
+            width: 70px;
+            height: 120px;
+            background: #444;
+            border-radius: 10px;
+            border-bottom: 8px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .pedal:active {
+            transform: translateY(5px);
+            border-bottom: 2px solid #222;
+            background: #666;
+        }
+
+        .palanca {
+            width: 40px;
+            height: 80px;
+            background: #222;
+            border: 2px solid var(--neon-red);
+            margin: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .hidden { display: none; }
+  
