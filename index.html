@@ -1,21 +1,47 @@
-<div id="control-wheel" style="display: none;">
-    <div class="cockpit-view">
-        <div class="volante-wrapper">
-            <img src="https://png.pngtree.com/png-vector/20230906/ourmid/pngtree-car-steering-wheel-png-image_9996073.png" id="volante-img" class="volante-img" alt="Volante">
-        </div>
-        
-        <div class="pedales-container">
-            <div class="pedal brake" ontouchstart="send('B')" ontouchend="send('S')">
-                <div class="pedal-texture">BRAKE</div>
-            </div>
-            <div class="pedal gas" ontouchstart="send('F')" ontouchend="send('S')">
-                <div class="pedal-texture">GAS</div>
-            </div>
-        </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gemini Pro Control - Volante y Pedales</title>
+    
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
 
-        <div class="shifter">
-            <div class="knob"></div>
-            <span>R N D</span>
+    <div id="control-wheel">
+        <div class="cockpit-view">
+            
+            <div class="volante-wrapper" id="volante">
+                <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA5L3Jhd3BpeGVsX29mZmljZV8xOV9waG90b19vZl9zaW1wbGVfc3RlZXJpbmdfd2hlZWxfZ2FtZV9mb250X3ZpZV8yMDU3MWY5Yi1hMTBkLTRiNDItOWJlNC03NjdlMTdjODQ2ODRfMS5wbmc.png" 
+                     id="volante-img" 
+                     class="volante-img" 
+                     alt="Volante">
+            </div>
+            
+            <div class="pedales-container">
+                <div class="pedal brake" ontouchstart="send('B')" ontouchend="send('S')">
+                    <div class="pedal-label">BRAKE</div>
+                </div>
+                
+                <div class="pedal gas" ontouchstart="send('F')" ontouchend="send('S')">
+                    <div class="pedal-label">GAS</div>
+                </div>
+            </div>
+
+            <div class="shifter">
+                <div class="knob"></div>
+                <div class="gear-indicator">
+                    <span>R</span>
+                    <span>N</span>
+                    <span class="active-gear">D</span>
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
+
+    <script src="index.js"></script>
+
+</body>
+</html>
