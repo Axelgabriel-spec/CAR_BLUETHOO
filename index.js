@@ -40,3 +40,57 @@ volanteImg.addEventListener('touchend', () => {
     volanteImg.style.transform = `rotate(0deg)`; // El volante regresa al centro solo
     send('S');
 });
+
+
+let dispositivoBT;
+let caracteristicaTX;
+
+// UUIDs estándar para comunicación serial por Bluetooth LE
+const SERVICIO_UUID = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
+const CARACTERISTICA_UUID = '6e400002-b5a3-f393-e0a9-e50e24dcca9e';
+
+const botonConectar = document.getElementById('btn-bluetooth');
+
+botonConectar.addEventListener('click', async () => {
+    if (dispositivoBT && dispositivoBT.gatt.connected) {
+        dispositivoBT.gatt.disconnect();
+        botonConectar.innerText = "CONECTAR CARRITO";
+        botonConectar.classList.remove('connected');
+        return;
+    }
+
+    try {
+        console.log('Buscando ESP32...');
+        dispositivoBT = await navigator.bluetooth.requestDevice({
+            filters: [{ namePrefix: 'ESP32' }], // Tu ESP32 debe llamarse algo que empiece con "ESP32"
+            optionalServices: [SERVICIO_UUID]
+        });
+
+        const servidor = await dispositivoBT.gatt.connect();
+        const servicio = await servidor.getPrimaryService(SERVICIO_UUID);
+        caracteristicaTX = await servicio.getCharacteristic(CARACTERISTICA_UUID);
+
+        botonConectar.innerText = "DESCONECTAR";
+        botonConectar.classList.add('connected');
+        alert("¡Conectado al volante del futuro!");
+
+    } catch (error) {
+        console.error("Error de Bluetooth:", error);
+        alert("No se pudo conectar. Asegúrate de estar en HTTPS y con Bluetooth activo.");
+    }
+});
+
+// Función para enviar los comandos al carrito
+async function enviarComando(comando) {
+    console.log("Comando:", comando);
+    
+    if (caracteristicaTX) {
+        try {
+            const encoder = new TextEncoder();
+            await caracteristicaTX.writeValue(encoder.encode(comando));
+        } catch (error) {
+            console.error("Error al enviar comando:", error);
+        }
+    }
+}
+
