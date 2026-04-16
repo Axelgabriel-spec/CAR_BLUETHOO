@@ -57,3 +57,21 @@
     transform: scale(0.9) translateY(5px);
     box-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
+
+
+/* Estilo rápido para el botón de conexión */
+        #btn-bluetooth {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            padding: 10px 20px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        #btn-bluetooth.connected { background-color: #e74c3c; }
