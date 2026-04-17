@@ -62,7 +62,7 @@ botonConectar.addEventListener('click', async () => {
     try {
         console.log('Buscando ESP32...');
         dispositivoBT = await navigator.bluetooth.requestDevice({
-            filters: [{ namePrefix: 'ESP32' }], // Tu ESP32 debe llamarse algo que empiece con "ESP32"
+            filters: [{ namePrefix: 'ESP32_CARROBLUETOOH' }], // Tu ESP32 debe llamarse algo que empiece con "ESP32"
             optionalServices: [SERVICIO_UUID]
         });
 
